@@ -4,24 +4,21 @@
 Proyek ini bertujuan untuk menganalisis dataset e-commerce publik guna memahami pola transaksi, performa pengiriman, dan tingkat kepuasan pelanggan. Fokus utama analisis adalah mengidentifikasi keterlambatan pengiriman serta hubungannya dengan rating pelanggan.
 
 # Dataset
-
 Dataset yang digunakan meliputi:
+- `orders_dataset.csv`: Informasi utama pesanan.
+- `order_items_dataset.csv`: Detail item dalam setiap pesanan.
+- `order_payments_dataset.csv`: Informasi pembayaran pesanan.
+- `order_reviews_dataset.csv`: Ulasan pelanggan untuk pesanan.
 
-orders_dataset.csv → Informasi utama pesanan
-order_items_dataset.csv → Detail item dalam pesanan
-order_payments_dataset.csv → Informasi pembayaran
-order_reviews_dataset.csv → Ulasan pelanggan
-
- 🔹 Hasil Data Wrangling
-main_data.csv → Dataset utama untuk analisis dan dashboard
-
-# Teknologi yang Digunakan
-Python
-Pandas
-NumPy
-Matplotlib
-Seaborn
-Streamlit
+## Persyaratan (Requirements)
+Untuk menjalankan analisis ini, Anda memerlukan pustaka Python berikut:
+- `python`
+- `pandas`
+- `numpy`
+- `matplotlib`
+- `seaborn`
+- `datetime`
+  
 
 # Struktur Proyek
 Project-Akhir-Analisis-Data/
@@ -39,13 +36,24 @@ Project-Akhir-Analisis-Data/
 ├── requirements.txt
 └── README.md
 
+## Cara Menjalankan Analisis (Jupyter/Colab Notebook)
+1.  **Unduh Dataset**: Pastikan Anda memiliki semua file CSV dataset (`orders_dataset.csv`, `order_items_dataset.csv`, `order_payments_dataset.csv`, `order_reviews_dataset.csv`) di direktori yang sama dengan notebook ini atau sesuaikan path di kode.
+2.  **Buka Notebook**: Buka file `.ipynb` ini di lingkungan Jupyter Notebook atau Google Colab.
+3.  **Jalankan Sel**: Jalankan setiap sel kode secara berurutan. Notebook ini telah dirancang untuk memandu Anda melalui langkah-langkah:
+    -   Pemuatan Pustaka
+    -   Data Wrangling (Gathering, Assessing, Cleaning)
+    -   Exploratory Data Analysis (EDA)
+    -   Visualization & Explanatory Analysis (Menjawab Pertanyaan Bisnis)
+    -   Analisis Lanjutan (Opsional)
+    -   Pembuatan `main_data.csv`
+    -   Kesimpulan
+  
+Output dari proses data wrangling akan menghasilkan file `main_data.csv` yang berisi gabungan dari semua dataset relevan untuk analisis.
+
 # Setup Virtual Environment
-🔹 1. Clone Repository
-git clone https://github.com/aryantiina/Project-Akhir-Analisis-Data.git
-cd Project-Akhir-Analisis-Data
-🔹 2. Buat Virtual Environment
-python -m venv venv
-🔹 3. Aktifkan Virtual Environment
+1.  **Clone Repository**
+2.  **uat Virtual Environment `python -m venv venv`**
+3.  **ktifkan Virtual Environment**
 
 Windows: venv\Scripts\activate
 Mac/Linux: source venv/bin/activate
@@ -53,15 +61,19 @@ Mac/Linux: source venv/bin/activate
 # Instalasi Dependencies
 
 Gunakan file requirements.txt agar versi library konsisten:
-
+ ```
 pip install -r requirements.txt
+  ```
 
 # Cara Menjalankan Dashboard
+ ```
 streamlit run Dashboard/dashboard.py
+ ```
 
 Buka di browser:
-
+ ```
 http://localhost:8501
+ ```
 
 # Hasil & Insight Utama
 ## Keterlambatan Pengiriman
@@ -75,12 +87,12 @@ Korelasi negatif lemah (-0.22) antara waktu pengiriman dan rating
 Pengiriman lebih lama → rating cenderung menurun
 
 # Kesimpulan
-1. Keterlambatan pengiriman masih menjadi masalah utama
-2. Waktu pengiriman mempengaruhi kepuasan pelanggan
-3. Terdapat pola musiman pada keterlambatan
+-   **Keterlambatan pengiriman masih menjadi masalah utama**
+-   **Waktu pengiriman mempengaruhi kepuasan pelanggan**
+-   **rdapat pola musiman pada keterlambatan**
 
 # Rekomendasi
-1. Optimalkan logistik pada bulan dengan delay tinggi
-2. Tingkatkan akurasi estimasi pengiriman
-3. Berikan transparansi status pengiriman
+-   **optimalkan logistik pada bulan dengan delay tinggi**
+-   **Tingkatkan akurasi estimasi pengiriman**
+-   **Berikan transparansi status pengiriman**
 
