@@ -24,29 +24,35 @@ def load_data():
     for col in date_cols:
         if col in df.columns:
             df[col] = pd.to_datetime(df[col], errors='coerce')
+
+    df = df.dropna(subset=['order_purchase_timestamp'])
+    
     return df
 
 df_all_merged = load_data()
 
 st.sidebar.header("Pengaturan & Informasi")
-st.sidebar.info(
-    "Dashboard ini menampilkan insight dari analisis data E-Commerce Olist."
-)
+st.sidebar.info("Dashboard ini menampilkan insight dari analisis data E-Commerce Olist.")
 
 min_date = df_all_merged['order_purchase_timestamp'].min()
 max_date = df_all_merged['order_purchase_timestamp'].max()
 
-start_date, end_date = st.sidebar.date_input(
+date_range = st.sidebar.date_input(
     label="Filter Tanggal Pembelian",
     min_value=min_date,
     max_value=max_date,
     value=[min_date, max_date]
 )
 
+if isinstance(date_range, (list, tuple)) and len(date_range) == 2:
+    start_date, end_date = date_range
+else:
+    start_date = end_date = date_range
+
 df_filtered = df_all_merged[
     (df_all_merged['order_purchase_timestamp'] >= pd.to_datetime(start_date)) &
     (df_all_merged['order_purchase_timestamp'] <= pd.to_datetime(end_date))
-]
+].copy()
 
 st.header("1. Keterlambatan Pengiriman Tahun 2018")
 
@@ -62,8 +68,7 @@ if total_orders_2018 > 0:
     st.metric(label="Persentase Keterlambatan Pengiriman (2018)", value=f"{percentage_delayed_2018:.2f}%")
 
     fig1, ax1 = plt.subplots(figsize=(8, 6))
-    highlight_color = 'darkred'
-    ax1.bar(['Keterlambatan Pengiriman'], [percentage_delayed_2018], color=[highlight_color], width=0.5)
+    ax1.bar(['Keterlambatan Pengiriman'], [percentage_delayed_2018], color='darkred', width=0.5)
     ax1.set_ylim(0, 100)
     ax1.set_ylabel('Persentase (%)')
     ax1.set_title('Persentase Keterlambatan Pengiriman di Tahun 2018')
