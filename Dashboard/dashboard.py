@@ -11,7 +11,7 @@ st.write("Dashboard ini menyajikan analisis performa pengiriman dan rating pelan
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv('../Data/main_data.csv')
+    df = pd.read_csv('main_data.csv')
     
     date_cols = [
         'order_purchase_timestamp',
