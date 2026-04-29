@@ -8,7 +8,7 @@ import os
 st.set_page_config(layout="wide", page_title="E-Commerce Data Analysis Dashboard")
 
 st.title("E-Commerce Public Dataset Analysis")
-st.write("Dashboard ini menyajikan analisis performa pengiriman dan rating pelanggan.",  os.listdir())
+st.write("Dashboard ini menyajikan analisis performa pengiriman dan rating pelanggan.")
 
 @st.cache_data
 def load_data():
